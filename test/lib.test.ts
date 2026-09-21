@@ -11,7 +11,7 @@ describe('minecraft', () => {
   it('real to ticks', () => expect(realToTicks(1)).toBe(1200));
 });
 describe('fps', () => {
-  it('cm360', () => expect(cm360(800, 1, 0.022)).toBeCloseTo(52.39, 1));
+  it('cm360', () => expect(cm360(800, 1, 0.022)).toBeCloseTo(51.95, 1));
   it('convert cs2 to valorant', () => expect(convertSens(1, 0.022, 0.07)).toBeCloseTo(0.3143, 3));
-  it('sens for cm', () => expect(sensForCm360(52.39, 800, 0.022)).toBeCloseTo(1, 1));
+  it('sens for cm', () => expect(sensForCm360(51.95, 800, 0.022)).toBeCloseTo(1, 1));
 });
