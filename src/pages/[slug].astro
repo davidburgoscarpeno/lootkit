@@ -5,6 +5,8 @@ import Faq from '../components/Faq.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import AdSlot from '../components/AdSlot.astro';
 import EdpiTool from '../tools/EdpiTool';
+import { NetherTool, XpTool, CoordTool, TimeToolMc } from '../tools/McTools';
+import { SensConverterTool, DpiTool } from '../tools/FpsTools';
 import { implementedTools, type Tool } from '../data/tools';
 import { site } from '../config';
 import { t } from '../i18n/en';
@@ -29,7 +31,13 @@ const schema = [
   <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: tool.category }, { name: tool.name }]} />
   <h1>{tool.name}</h1>
   <p class="lead">{tool.intro}</p>
-  <EdpiTool client:load />
+  {tool.component === 'EdpiTool' && <EdpiTool client:load />}
+  {tool.component === 'NetherTool' && <NetherTool client:load />}
+  {tool.component === 'XpTool' && <XpTool client:load />}
+  {tool.component === 'CoordTool' && <CoordTool client:load />}
+  {tool.component === 'TimeToolMc' && <TimeToolMc client:load />}
+  {tool.component === 'SensConverterTool' && <SensConverterTool client:load />}
+  {tool.component === 'DpiTool' && <DpiTool client:load />}
   <AdSlot position="after-tool" />
   <h2>{t.tool.howTo}</h2>
   <ol>{tool.howTo.map((step) => <li>{step}</li>)}</ol>
