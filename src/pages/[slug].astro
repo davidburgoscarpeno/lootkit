@@ -7,6 +7,8 @@ import AdSlot from '../components/AdSlot.astro';
 import EdpiTool from '../tools/EdpiTool';
 import { NetherTool, XpTool, CoordTool, TimeToolMc } from '../tools/McTools';
 import { SensConverterTool, DpiTool } from '../tools/FpsTools';
+import { TypeChartTool, DamageCalcTool } from '../tools/PokeTools';
+import { AnvilTool, CommandTool, PotionTool, ArmorTool } from '../tools/McTools2';
 import { implementedTools, type Tool } from '../data/tools';
 import { site } from '../config';
 import { t } from '../i18n/en';
@@ -38,6 +40,12 @@ const schema = [
   {tool.component === 'TimeToolMc' && <TimeToolMc client:load />}
   {tool.component === 'SensConverterTool' && <SensConverterTool client:load />}
   {tool.component === 'DpiTool' && <DpiTool client:load />}
+  {tool.component === 'TypeChartTool' && <TypeChartTool client:load />}
+  {tool.component === 'DamageCalcTool' && <DamageCalcTool client:load />}
+  {tool.component === 'AnvilTool' && <AnvilTool client:load />}
+  {tool.component === 'CommandTool' && <CommandTool client:load />}
+  {tool.component === 'PotionTool' && <PotionTool client:load />}
+  {tool.component === 'ArmorTool' && <ArmorTool client:load />}
   <AdSlot position="after-tool" />
   <h2>{t.tool.howTo}</h2>
   <ol>{tool.howTo.map((step) => <li>{step}</li>)}</ol>

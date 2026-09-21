@@ -118,6 +118,99 @@ export const tools: Tool[] = [
     faqs: [{ q: 'eDPI or cm/360 - which should I use?', a: 'cm/360 is universal (works across any game and DPI); eDPI is the quick comparison inside one game.' }],
     related: ['edpi-calculator', 'sensitivity-converter'],
     component: 'DpiTool', implemented: true
+  },
+  {
+    slug: 'pokemon-type-calculator',
+    name: 'Pokemon Type Calculator',
+    category: 'Pokemon',
+    description: 'Weaknesses, resistances and immunities for any type or dual type.',
+    seoTitle: 'Pokemon Type Calculator - Weaknesses and Resistances | LootKit',
+    metaDescription: 'Free Pokemon type calculator. Check weaknesses, resistances and immunities for any type combination with the Gen VI+ chart.',
+    intro: 'What beats a Water/Flying type? Pick a defending type combo for its weaknesses, or an attacking type to see what it hits super effectively.',
+    howTo: ['Choose defending or attacking mode.', 'Pick the type (and second type for dual defenders).', 'Read the multipliers: 0x immune, 0.25-0.5x resisted, 2-4x weak.'],
+    examples: [{ title: 'Defending Water/Flying', output: 'Electric hits for 4x, Rock for 2x; Ground does nothing.' }],
+    faqs: [
+      { q: 'Which games does this chart cover?', a: 'Every mainline game from X and Y onward (Gen VI+), including Scarlet and Violet. Fairy type included.' },
+      { q: 'What about Terastallization?', a: 'A Terastallized Pokemon defends as its Tera type only - enter that type (or combo) here.' }
+    ],
+    related: ['pokemon-damage-calculator', 'sensitivity-converter'],
+    component: 'TypeChartTool', implemented: true, popular: true
+  },
+  {
+    slug: 'pokemon-damage-calculator',
+    name: 'Pokemon Damage Calculator',
+    category: 'Pokemon',
+    description: 'Damage range for any move with the official Gen V+ formula.',
+    seoTitle: 'Pokemon Damage Calculator - Move Damage Range | LootKit',
+    metaDescription: 'Free Pokemon damage calculator. Enter level, power, Attack and Defense for the exact min-max damage range using the official formula.',
+    intro: 'Will that move knock out the opponent? Compute the exact damage range with the official Gen V+ formula, including STAB and type effectiveness.',
+    howTo: ['Enter attacker level, move power and both stats.', 'Set the type multiplier (use the type calculator if unsure).', 'Tick STAB if the move matches the attacker type.'],
+    examples: [{ title: 'Level 50, power 90, 120 Atk vs 100 Def, STAB, 2x', output: 'About 154-181 damage.' }],
+    faqs: [{ q: 'What is not included?', a: 'Critical hits, weather, held items, abilities and screens. It is the base formula with STAB and type multipliers.' }],
+    related: ['pokemon-type-calculator', 'edpi-calculator'],
+    component: 'DamageCalcTool', implemented: true, popular: true
+  },
+  {
+    slug: 'minecraft-anvil-calculator',
+    name: 'Minecraft Anvil Calculator',
+    category: 'Minecraft',
+    description: 'Anvil combination cost and the "Too Expensive" check before you spend levels.',
+    seoTitle: 'Minecraft Anvil Calculator - Combine Cost and Too Expensive | LootKit',
+    metaDescription: 'Free Minecraft anvil calculator. Compute prior work penalties and total level cost for combining items, with the 39-level survival cap.',
+    intro: 'Anvil costs double with every prior use. Check the real cost before combining so your god gear never hits the "Too Expensive" wall.',
+    howTo: ['Enter prior anvil uses for both items (F3+H tooltips show them).', 'Add the enchantment level cost of the combination.', 'Read the total and the survival feasibility.'],
+    examples: [{ title: 'Item used twice + fresh book, cost 4', output: '3 + 0 + 4 = 7 levels; result counts as 3 prior uses.' }],
+    faqs: [
+      { q: 'Why does cost double each use?', a: 'Prior work penalty is 2^uses - 1 levels per item: 0, 1, 3, 7, 15, 31. It is why enchantment order matters.' },
+      { q: 'What is the survival cap?', a: 'Anything over 39 levels shows "Too Expensive" in survival, no matter how many levels you have.' }
+    ],
+    related: ['minecraft-xp-calculator', 'minecraft-potion-calculator'],
+    component: 'AnvilTool', implemented: true
+  },
+  {
+    slug: 'minecraft-command-generator',
+    name: 'Minecraft Command Generator',
+    category: 'Minecraft',
+    description: 'Build /give, /summon, /effect, /time and /weather commands without memorizing syntax.',
+    seoTitle: 'Minecraft Command Generator - Give, Summon, Effect | LootKit',
+    metaDescription: 'Free Minecraft command generator. Build /give, /summon, /effect, /time and /weather commands with correct Java Edition syntax and copy them in one click.',
+    intro: 'No syntax memorizing: pick the command, choose options, copy the result into chat or a command block.',
+    howTo: ['Pick the command type.', 'Choose target and options.', 'Copy the generated command (Java Edition 1.20+).'],
+    examples: [{ title: 'Speed II for 5 minutes on the nearest player', output: '/effect give @p minecraft:speed 300 1' }],
+    faqs: [{ q: 'Bedrock?', a: 'Most generated commands also work in Bedrock, but syntax targets Java Edition 1.20+.' }],
+    related: ['minecraft-time-calculator', 'minecraft-anvil-calculator'],
+    component: 'CommandTool', implemented: true
+  },
+  {
+    slug: 'minecraft-potion-calculator',
+    name: 'Minecraft Potion Calculator',
+    category: 'Minecraft',
+    description: 'Full brewing chart: every potion, its ingredients, effects and modifiers.',
+    seoTitle: 'Minecraft Potion Calculator - Brewing Chart and Recipes | LootKit',
+    metaDescription: 'Free Minecraft potion calculator. Search the complete brewing chart: base, ingredient, result and effect for every potion, plus redstone and glowstone modifiers.',
+    intro: 'The full brewing chart, searchable: what to add to an Awkward Potion, what each result does, and how redstone, glowstone and gunpowder modify it.',
+    howTo: ['Search by ingredient, potion name or effect.', 'Read base, ingredient, result and effect.', 'Apply modifiers: redstone extends, glowstone strengthens, gunpowder makes splash.'],
+    examples: [{ title: 'Awkward Potion + Blaze Powder', output: 'Potion of Strength (+3 attack damage, 3:00); add redstone for 8:00.' }],
+    faqs: [{ q: 'How do I get an Awkward Potion?', a: 'Brew a Water Bottle with Nether Wart. It has no effect itself but is the base for almost every effect potion.' }],
+    related: ['minecraft-anvil-calculator', 'minecraft-xp-calculator'],
+    component: 'PotionTool', implemented: true
+  },
+  {
+    slug: 'minecraft-armor-calculator',
+    name: 'Minecraft Armor Calculator',
+    category: 'Minecraft',
+    description: 'Exact damage reduction from armor points and toughness (Java formula).',
+    seoTitle: 'Minecraft Armor Calculator - Damage Reduction Formula | LootKit',
+    metaDescription: 'Free Minecraft armor calculator. Compute exact damage reduction from armor points, toughness and incoming damage using the Java Edition formula.',
+    intro: 'Full netherite does not reduce every hit by the same amount. The Java formula scales with incoming damage - see exactly how much you block.',
+    howTo: ['Enter armor points (each icon = 2 points, full bar = 20).', 'Add toughness (netherite = 12, diamond = 8).', 'Enter the raw incoming damage.'],
+    examples: [{ title: 'Full netherite vs a 10-damage hit', output: 'About 68% reduced: you take roughly 3.2 damage.' }],
+    faqs: [
+      { q: 'Why do stronger hits hurt more through armor?', a: 'Each 2 damage removes the effect of 1 armor point unless toughness compensates: reduction = min(20, max(points/5, points - damage/(2 + toughness/4))) / 25.' },
+      { q: 'Bedrock differences?', a: 'Bedrock uses a simpler flat 4% per point (80% max) with no damage scaling. This calculator uses the Java formula.' }
+    ],
+    related: ['minecraft-anvil-calculator', 'minecraft-nether-calculator'],
+    component: 'ArmorTool', implemented: true
   }
 ];
 export const implementedTools = tools.filter((t) => t.implemented);
